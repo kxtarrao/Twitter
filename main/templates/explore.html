@@ -1,0 +1,34 @@
+{% extends "main_base.html" %}
+
+{% block regular_basehead %}
+<title>Explore</title>
+{% endblock %}
+
+{% block regular_basebody %}
+
+<!--Title-->
+<h1>Explore</h1>
+
+<!--Display Existing Tweets-->
+{% if explore_tweets|length < 1 %}
+<h4>There are no tweets at the moment.</h4>
+{% else %}
+<table>
+    <tr>
+        <th>User</th>
+        <th>Tweet</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+        {% for explore_tweet in explore_tweets %}
+        <tr>
+            <td>{{explore_tweet.author.username}}</td>
+            <td>{{explore_tweet.tweet_text}}</td>
+            <td>{{explore_tweet.date_created.date}}</td>
+            <td>{{explore_tweet.date_created.time}}</td>
+        </tr>
+        {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

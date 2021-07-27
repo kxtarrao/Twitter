@@ -1,0 +1,29 @@
+{% extends "register_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block initial_basehead %}
+<title>Login</title>
+{% endblock %}
+
+{% block initial_basebody %}
+
+<!--Title-->
+<h1>Login</h1>
+
+<!--Login Form-->
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" value="Submit"><br>
+</form>
+
+<!--Signup Redirect-->
+<a href="/signup">Sign Up</a>
+
+<br>
+<br>
+
+<!--New User Welcome-->
+<p>Welcome to my example website. Please signup for an account and explore the site!</p>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "main_base.html" %}
+
+{% block regular_basehead %}
+<title>Search Results</title>
+{% endblock %}
+
+{% block regular_basebody %}
+
+<!--Title-->
+<h1>Search Results</h1>
+
+<!--Display Existing Tweets-->
+{% if search_tweets|length < 1 %}
+<h4>No current tweets match query:</h4>
+<h4>{{search_text}}</h4>
+{% else %}
+<table>
+    <tr>
+        <th>User</th>
+        <th>Tweet</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+        {% for search_tweet in search_tweets %}
+        <tr>
+            <td>{{search_tweet.author.username}}</td>
+            <td>{{search_tweet.tweet_text}}</td>
+            <td>{{search_tweet.date_created.date}}</td>
+            <td>{{search_tweet.date_created.time}}</td>
+        </tr>
+        {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

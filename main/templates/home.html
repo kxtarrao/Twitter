@@ -1,0 +1,46 @@
+{% extends "main_base.html" %}
+
+{% block regular_basehead %}
+<title>Home</title>
+{% endblock %}
+
+{% block regular_basebody %}
+
+<!--Title-->
+<h1>Home</h1>
+
+<!--Display Existing Tweets-->
+{% if home_tweets|length < 1 %}
+<h4>There are no tweets at the moment.</h4>
+{% else %}
+<table>
+    <tr>
+        <th>Tweet</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Actions</th>
+    </tr>
+        {% for home_tweet in home_tweets %}
+        <tr>
+            <td>{{home_tweet.tweet_text}}</td>
+            <td>{{home_tweet.date_created.date}}</td>
+            <td>{{home_tweet.date_created.time}}</td>
+            <td>
+                <a href="/update/{{home_tweet.id}}">Update</a>
+                <a href="/delete/{{home_tweet.id}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+</table>
+{% endif %}
+
+<!--TextBox and Submit-->
+<div class="input-group input-group-sm mb-3">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{new_tweet_form}}
+        <input type="submit" value="Tweet" name="new_tweet" class="btn btn-outline-secondary">
+    </form>
+</div>
+
+{% endblock %}

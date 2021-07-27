@@ -1,0 +1,21 @@
+{% extends "main_base.html" %}
+
+{% block regular_basehead %}
+<title>Update</title>
+{% endblock %}
+
+{% block regular_basebody %}
+
+<!--TextBox and Submit-->
+<div class="input-group mb-3">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{update_form}}
+        <input type="submit" value="Submit" name="submit" class="btn btn-outline-secondary">
+        <input type="reset" value="Reset" class="btn btn-outline-secondary">
+        <input type="submit" value="Cancel" name="cancel" class="btn btn-outline-secondary">
+    </form>
+</div>
+
+
+{% endblock %}

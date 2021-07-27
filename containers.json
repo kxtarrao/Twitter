@@ -1,0 +1,8 @@
+{
+    "django": {
+        "image": ":container-service-1.django-container.9",
+        "ports": {
+            "8000": "HTTP"
+        }
+    }
+}

@@ -1,0 +1,4 @@
+{
+    "containerName": "django",
+    "containerPort": 8000
+}
